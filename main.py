@@ -54,9 +54,22 @@ def analysis_one(book_list):
     lowest_review_book = min(books_2018, key=lambda book: book.number_of_reviews)
     print(f"The book with the lowest number of reviews in 2018 was {lowest_review_book.name} with {lowest_review_book.number_of_reviews} reviews.")
 
+# ------------------------------------- analysis_two(book_list) ---------------------------------------------------
 def analysis_two(book_list):
-    print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
+    print("Analysis Two:")
+    print("Which genre (fiction or non-fiction) has appeared the most in the top 50's list?")
+    book_set = set(book_list)
+    fiction_set_appearances = set(filter(lambda book: book.genre == "Fiction", book_set))
+    nonfiction_set_appearances = set(filter(lambda book: book.genre == "Non Fiction", book_set))
+    number_of_fiction_appearances = len(fiction_set_appearances)
+    number_of_nonfiction_appearances = len(nonfiction_set_appearances)
 
+    if number_of_fiction_appearances > number_of_nonfiction_appearances:
+        print(f"Fiction books appeared the most in the top 50's list.")
+    elif number_of_nonfiction_appearances > number_of_fiction_appearances:
+        print(f"Non Fiction books appeared the most in the top 50's list.")
+    else:
+        print("There are an equal number of Fiction genre books as Non Fiction genre books.")
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
